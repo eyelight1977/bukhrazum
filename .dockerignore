@@ -1,0 +1,9 @@
+*
+!app/
+!app/**
+!requirements.txt
+!package.json
+!package-lock.json
+!Dockerfile
+app/**/__pycache__/
+app/**/*.pyc

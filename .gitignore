@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+work/
+results/
+submission/
+данные/
+/*.docx
+данные-*.zip
+подготовка/
