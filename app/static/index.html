@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>БухРазум — проверка отчётов</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/report.css"></head>
+<body>
+<header><a class="brand" href="/">БухРазум<span> / </span>Проверка отчёта</a><span class="local">0.3.2 · ● Локальная обработка</span></header>
+<main>
+<section id="start">
+  <div class="eyebrow">ОТЧЁТ И ПЕРВИЧНЫЕ ДОКУМЕНТЫ</div>
+  <h1>Проверь цифры.<br>Посмотри основания.</h1>
+  <p class="intro">Помощник сопоставит КФЗ с первичными и расчетными документами, покажет расхождения и данные, которым нужно подтверждение.</p>
+  <form id="uploadForm" class="upload">
+    <div class="file-grid">
+      <label class="filebox"><b>01 · Итоговая КФЗ</b><span>PDF с таблицей отчёта</span><input id="report" type="file" accept=".pdf" required><small id="reportHint">Выбери один файл</small></label>
+      <label class="filebox"><b>02 · Первичные и расчетные документы</b><span>PDF, DOCX, XLSX, PNG или JPEG</span><input id="documents" type="file" accept=".pdf,.docx,.xlsx,.png,.jpg,.jpeg" multiple><small id="docsHint">Выбери весь комплект первичных и расчетных документов</small></label>
+    </div>
+    <div class="form-grid">
+      <label>Строка КФЗ<input id="target" placeholder="Например: 3 этап, 2026 г." required></label>
+      <label>Договор<input id="contract" placeholder="Определить из КФЗ"></label>
+      <label>Начало периода<input id="startDate" type="date" required></label>
+      <label>Конец периода<input id="endDate" type="date" required></label>
+    </div>
+    <details class="options"><summary>Правило заключения при неполной проверке</summary><label>При совпадении проверенных сумм<select id="policy"><option value="qualified">Рекомендовать подписание с перечнем непроверенных показателей</option><option value="strict">Сначала запросить дополнительную проверку</option></select></label><small>Правило с оговорками принято временно до уточнения у заказчика. Непроверенные показатели сохраняют свой статус.</small></details>
+    <div class="form-bottom"><small>Файлы обрабатываются на этом компьютере.<br>Контрольный файл с ответами не участвует в расчётах.</small><button id="submit" type="submit">Начать сверку <span>→</span></button></div>
+  </form>
+  <section class="history"><h2>Последние проверки</h2><div id="history"></div></section>
+</section>
+<section id="loading" hidden><div class="spinner"></div><h1>Сверяю документы</h1><p id="progressText">Подготовка</p><small>Можно вернуться к проверке после обновления страницы.</small></section>
+<section id="result" hidden>
+  <div class="result-top"><button class="text-button" id="newCheck">← Новая проверка</button><div><a id="exportHtml" class="secondary" target="_blank" rel="noopener">Открыть отчёт</a><a id="exportJson" class="secondary">Скачать JSON</a></div></div>
+  <div id="reportHost"></div>
+</section>
+<div id="error" role="alert" hidden></div>
+</main><footer>Команда «УмЗаРазум» · Хакатон МФТИ · Сверка по предоставленным документам</footer>
+<script src="/report_view.js"></script><script src="/app.js"></script></body></html>
